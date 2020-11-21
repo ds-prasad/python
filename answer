@@ -1,0 +1,33 @@
+#PRASAD DS 
+
+def max_function(str1,num1):
+    array1=[0]*256 
+    
+    for i in range(num1):
+        x=ord(str1[i])
+        array1[x]+=1 
+        
+    max_num=0 
+    
+    for i in range(256):
+        if array1[i]!=0:
+            max_num+=1 
+            
+    return max_num
+    
+def min_str_function(str1):
+    min_num=len(str1)
+    max_num=max_function(str1,len(str1))
+    
+    for i in range(min_num):
+        for j in range(min_num):
+            substring1=str1[i:j]
+            distinct=max_function(substring1,len(substring1))
+            
+            if(len(substring1)<len(str1) and max_num==distinct):
+                min_num=len(substring1)
+                
+    return min_num
+    
+input_str=input()
+print(min_str_function(input_str))
